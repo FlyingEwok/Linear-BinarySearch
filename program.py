@@ -1,29 +1,37 @@
 tutlist = ["t", "u", "t", "o", "r", "i", "a", "l", "o"]
 
-# Create search function
-def search(list, listlength, value, amount): 
-  
+# Create global linear search function
+def search(list, listlength, value): 
+    counter = 0
+    results = []
+
     for i in range (tutlistlength): 
         if (tutlist[i] == value): 
-            amount += 1
-            return i 
-    return -1 
+            results.append(counter)
+            counter += 1
+        else:
+            counter += 1
 
-def search2(list, listlength, value, amount):
-    if (amount > 1):
-        for i in range (tutlistlength): 
-            if (tutlist[i] == value): 
-                amount += 1
-                return i 
-        return -1 
-  
+    if (results == []):
+        return -1     
+    else:
+        return results 
+    
+ 
 
 # intialise variables
 tutlistlength = len(tutlist)
 value = input("Enter a letter: ")
 amount = 0
 
-result = search(tutlist, tutlistlength, value, amount) 
+# calculate results
+result = search(tutlist, tutlistlength, value)
+
+# Find the amount of that character
+if (result != -1):
+    amount = len(result)
+
+# Print the results with statement
 if(result == -1): 
     print("Element is not in list") 
 else: 
